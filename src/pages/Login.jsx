@@ -5,7 +5,7 @@ function Login() {
     <div className='formContainer'>
         <div className='formWrapper'>
                 <span className="logo">Rain Chart</span>
-                <span className="title"> Register </span>
+                <span className="title"> Sign In</span>
             <form> 
                 <input type="email"  placeholder='Enter your email '/ >
                 <input type="password"  placeholder='Enter your password'/ >

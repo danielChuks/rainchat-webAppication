@@ -13,6 +13,7 @@
         flex-direction: column;
         gap: 10px;
         align-items: center;
+        width: 300px;
         
         .logo{
             color: #5d5b8d;
@@ -30,6 +31,7 @@
 
             input{
                 padding: 15px ;
+                width: 230px;
                 border: none;
                 border-bottom: 1px solid #a7bcff;
                 &::placeholder{
