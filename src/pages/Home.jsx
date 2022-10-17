@@ -1,6 +1,6 @@
 import React from 'react'
 import Sidebar from '../components/sidebarComponents/Sidebar';
-import Chat from '../components/chatComponents/Chat';
+import Chat from '../components/ChatScreen/ChatScreen';
 
 function Home() {
   return (

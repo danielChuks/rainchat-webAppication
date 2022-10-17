@@ -106,9 +106,9 @@
 
                     img{
                         background-color: #ddddf7;
-                        height: 24px;
-                        width: 24px;
-                        border-radius: 50%;
+                        height: 25px;
+                        width: 25px;
+                        border-radius: 60%;
                         object-fit: cover;
                     }
 
@@ -126,21 +126,67 @@
                 border-bottom : 1px soild gray;
 
                 .searchForm{
+                    padding: 10px;
+                    
                     input{
+                       background-color: transparent;
+                       border: none;
+                       color: white ;
+                       outline: none;
+
+                       &::placeholder{
+                        color: lightgrey;
+                       }
                     }
                 }
-                .searchChat{
-                    img{
-                        width: 50px;
-                        height: 50px;
-                        border-radius: 50%;
-                        object-fit: cover;
-                    }
+                
+            }
+            .userChat{
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: white;
+                cursor: pointer;
+                &:hover{
+                    background-color: #2f2d52;
+                }
+
+                img{
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+                .userinfo{
+                    span{font-size: 18px; width: 500px;}
+                    p{font-size: 14px; color:lightgrey;}
                 }
             }
         }
-        .chat{
+        .chatScreen{
             flex: 2;
+
+            .chatScreenInfo{
+                height: 50px;
+                background-color: #5d5b8d;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px;
+                color:lightgrey;
+                
+                .chatScreenIcons{
+                    gap: 10px;
+                    display: flex;
+
+                    img{
+                        height: 24px;
+                        cursor: pointer;
+                    }
+                }
+            }
         }
 
     }

@@ -2,8 +2,10 @@ import React from 'react'
 
 function Inputs() {
   return (
-    <div>Inputs</div>
+    <div>
+      <input type="text" placeholder=''/>
+    </div>
   )
 }
 
-export default Inputs
+export default Inputs; 
