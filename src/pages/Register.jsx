@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import addAvatar from "../img/addAvatar.png"
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import {auth, storage} from "../firebase"
+import {auth, storage, db} from "../firebase"
 import {ref,
     uploadBytesResumable,
     getDownloadURL 
   } from "firebase/storage";
+import { doc, setDoc } from "firebase/firestore";
 
 
 function Register() {
@@ -19,7 +20,13 @@ function Register() {
     const file = event.target[3].files[0]
 
      try {
+      /**
+       * res will hold the value we get when we assign the input value from the input to createUserWithEmailAndPassword
+       * storageref we hold the function of "ref" that takes the file value the user uploaded and assign the display name as name of the file uploaded.
+       * uploadTask calls the function that uploads the file.
+       */
        const res = await createUserWithEmailAndPassword(auth, email, password)
+       console.log(res)
 
        const storageRef = ref(storage, displayName);
 
@@ -36,6 +43,12 @@ function Register() {
                 displayName,
                 photoURL: downloadURL,
               })
+              await setDoc(doc(db, "users", "uid"), {
+                uid: res.user.uid,
+                displayName,
+                email,
+                photoURL: downloadURL
+              }) 
             });
           }
         );
@@ -68,4 +81,4 @@ function Register() {
   )
 }
 
-export default Register
+export default Register;
