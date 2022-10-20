@@ -42,12 +42,13 @@ function Register() {
             setErr(true);
           }, 
           () => {
-            getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL) => {
+            getDownloadURL(uploadTask.snapshot.ref)
+            .then(async(downloadURL) => {
               await updateProfile(res.user,{
                 displayName,
                 photoURL: downloadURL,
               })
-              await setDoc(doc(db, "users", "uid"), {
+              await setDoc(doc(db, "user", "uid"), {
                 uid: res.user.uid,
                 displayName,
                 email,
