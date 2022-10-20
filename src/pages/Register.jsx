@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {  useState } from 'react'
 import addAvatar from "../img/addAvatar.png"
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {auth, storage, db} from "../firebase"
@@ -7,10 +7,14 @@ import {ref,
     getDownloadURL 
   } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
+import {useNavigate} from "react-router-dom";
+
 
 
 function Register() {
   const [err, setErr] = useState(false)
+  const navigate = useNavigate()
+
 
   const onHandleSubmit = async (event) =>{
     event.preventDefault()
@@ -49,6 +53,8 @@ function Register() {
                 email,
                 photoURL: downloadURL
               }) 
+              await setDoc(doc(db, "userChat", res.user.uid), {})
+              navigate("/")
             });
           }
         );

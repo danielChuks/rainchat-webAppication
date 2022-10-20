@@ -112,6 +112,7 @@ $dark: #a7bcff;
         height: 80%;
         display: flex;
         overflow: hidden;
+        
         @include tablet {
             width: 90%;
         }
@@ -244,7 +245,8 @@ $dark: #a7bcff;
                 padding: 10px;
                 background-color: #ddddf7;
                 height: calc(100% - 160px);
-                overflow: scroll;
+                overflow: auto;
+            
 
                 .message{
                     display: flex;
