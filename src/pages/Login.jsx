@@ -1,9 +1,11 @@
 import { signInWithEmailAndPassword } from '@firebase/auth';
 import React, {useState } from 'react'
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
 
 function Login() {
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
 
   const onHandleSubmit = async (event) => {
@@ -17,6 +19,7 @@ function Login() {
 
     try {
       const res = await signInWithEmailAndPassword(auth, email, password)
+      navigate("/")
       console.log(res)
 
 
@@ -39,7 +42,7 @@ function Login() {
                 {error ? <span>Password must not be less than 6 characters</span>
                 : null}
             </form>
-            <p>You don't have an accout ? Register </p>
+            <p>You don't have an accout ? <Link to="/register">Register </Link></p>
         </div>
     </div>
   )

@@ -7,7 +7,7 @@ import {ref,
     getDownloadURL 
   } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 
 
@@ -55,7 +55,7 @@ function Register() {
                 photoURL: downloadURL
               }) 
               await setDoc(doc(db, "userChat", res.user.uid), {})
-              navigate("/")
+              navigate("/login")
             });
           }
         );
@@ -81,7 +81,7 @@ function Register() {
                 <button>Sign Up</button>
                 {err && <span>Something went wrong</span> }
             </form>
-            <p>You have an accout? Login </p>
+            <p>You have an accout? <Link to="/login"> Login </Link> </p>
         </div>
 
     </div>
