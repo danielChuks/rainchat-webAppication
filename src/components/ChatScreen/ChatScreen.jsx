@@ -3,7 +3,7 @@ import Add from '../../img/add.png'
 import more from '../../img/more.png'
 import Cam from '../../img/cam.png'
 import Messages from '../messageComponents/Messages';
-import Inputs from "../inputComponents/Inputs"
+import Inputs from "../inputComponents/Inputs";
 
 function ChatScreen() {
   return (
