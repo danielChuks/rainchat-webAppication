@@ -168,10 +168,11 @@ $dark: #a7bcff;
             }
 
             .search{
-                border-bottom : 1px soild gray;
+                border-bottom: 1px solid gray;
 
                 .searchForm{
                     padding: 10px;
+                
                     
                     input{
                        background-color: transparent;
@@ -180,7 +181,7 @@ $dark: #a7bcff;
                        outline: none;
 
                        &::placeholder{
-                        color: lightgrey;
+                        color: lightgray;
                        }
                     }
                 }
