@@ -1,15 +1,15 @@
 import { initializeApp } from "firebase/app";
 import {getAuth} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { getStorage} from "firebase/storage";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCaBCtc6d1NDe2bcbdljRbYwApJY9Vnpms",
-  authDomain: "rain-ebeaa.firebaseapp.com",
-  projectId: "rain-ebeaa",
-  storageBucket: "rain-ebeaa.appspot.com",
-  messagingSenderId: "255888780310",
-  appId: "1:255888780310:web:5dd672bf5589e07bde9937"
+  apiKey: "AIzaSyDqKbyWzM_jXXN8Ry5vQ6ews3sjrkXQRsI",
+  authDomain: "chat-36b8e.firebaseapp.com",
+  projectId: "chat-36b8e",
+  storageBucket: "chat-36b8e.appspot.com",
+  messagingSenderId: "297316209318",
+  appId: "1:297316209318:web:6f567b9ac8604d52bd5a67"
 };
 
 // Initialize Firebase
