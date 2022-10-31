@@ -5,18 +5,17 @@ import { ChatContext } from '../../context/ChatContext';
 import Message from './Message';
 
 function Messages() {
-  const [ message, setMessage] =useState([])
+  const [ messages, setMessages] =useState([])
   const {data} = useContext(ChatContext)
 
 
   useEffect(() => {
     const unSub = onSnapshot(doc(db, "chats", data.chatId), (doc) => {
-        doc.exists() && setMessage(doc.data().Messages)
+        doc.exists() && setMessages(doc.data().messages)
     })
 
     return () => unSub()
   }, [data.chatId])
-
 
   return (
     <div className='messages'>
