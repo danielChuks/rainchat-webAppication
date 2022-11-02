@@ -16,6 +16,7 @@ function Inputs() {
   const {currentUser} =useContext(AuthContext)
 
 const handleSend = async () => {
+
   if(img){
    const storageRef = ref(storage, uuid());
 
@@ -66,12 +67,17 @@ const handleSend = async () => {
   setImg(null)
 }
 
+const sendPress = (e) =>{
+  e.code === "Enter" && handleSend();
+}
+
   return (
     <div className='input'>
       <input  type="text" 
             placeholder="Type something...." 
             onChange={e => setText(e.target.value)}
             value={text}
+            onKeyDown={sendPress}
           />
       <div className='send'>
         <img src={Attach} alt=""/>
