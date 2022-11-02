@@ -39,9 +39,9 @@ const handleSend = async () => {
   }else{
     await updateDoc(doc(db, "chats", data.chatId), {
       messages: arrayUnion({
-        id:uuid,
+        id:uuid(),
         text,
-        senderId: currentUser,
+        senderId: currentUser.uid,
         date: Timestamp.now()
       })
     })
@@ -54,7 +54,7 @@ const handleSend = async () => {
     <div className='input'>
       <input  type="text" 
             placeholder="Type something...." 
-            onChange={e => e.target.value}
+            onChange={e => setText(e.target.value)}
           />
       <div className='send'>
         <img src={Attach} alt=""/>
