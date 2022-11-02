@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useContext, useEffect} from 'react'
+import { useRef } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { ChatContext } from '../../context/ChatContext';
 
@@ -8,19 +9,32 @@ function Message({message}) {
 const {currentUser} = useContext(AuthContext);
 const {data} = useContext(ChatContext)
 
-  // const ref = useRef();
-  // useEffect(() => {
-  //   ref.current
-  // },[message])
+
+// we are using this to ensure we are able to scroll through when there is a new message in the message content
+//.........................
+const ref  = useRef()
+
+useEffect(() => {
+  ref.current?.scrollIntoView({behavior: "smooth"})
+ 
+}, [message])
+
   return (
-    <div className='message owner'>
+    <div ref={ref} 
+        className={`message ${message.senderId === currentUser.uid && "owner"}`}
+        >
       <div className="messageInfo">
-        {/* <img src={} alt=''/>
+        <img 
+            src={
+              message.senderId === currentUser.uid 
+              ? currentUser.photoURL
+              : data.user.photoURL} alt=''
+              />
         <span>Just now</span>
       </div>
       <div className='messageContent'>
-        <p>Hello</p>
-        <img src={} alt=''/> */}
+        <p>{message.text}</p>
+          {message.img && <img src={message.img} alt=''/>}
       </div>
     </div>
   )

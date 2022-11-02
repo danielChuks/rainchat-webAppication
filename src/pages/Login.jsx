@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from '@firebase/auth';
 import React, {useState } from 'react'
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
 
 function Login() {
@@ -20,7 +20,6 @@ function Login() {
     try {
       const res = await signInWithEmailAndPassword(auth, email, password)
       navigate("/")
-      console.log(res)
 
 
     } catch (error) {
