@@ -30,7 +30,7 @@ function Chats() {
 
   return (
     <div className='chats'>
-    {Object.entries(chats)?.map((chats) => (
+    {Object.entries(chats)?.sort((a, b) => b[1].date - a[1].date).map((chats) => (
       <div className="userChat" 
           key={chats[0]} 
           onClick={() => handleSelect(chats[1].userInfo)}>
@@ -39,7 +39,7 @@ function Chats() {
            alt=""/>
           <div className="userChatInfo">
             <span>{chats[1].userInfo.displayName}</span>
-            <p>{chats[1].userInfo.lastmessage?.text}</p>
+            <p>{chats[1].lastMessages?.text}</p>
           </div>
       </div>
     ))}   

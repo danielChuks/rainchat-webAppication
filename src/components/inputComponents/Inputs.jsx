@@ -3,7 +3,7 @@ import Attach from "../../img/attach.png";
 import Img from "../../img/img.png"
 import {ChatContext} from "../../context/ChatContext"
 import { AuthContext } from '../../context/AuthContext';
-import { updateDoc, doc, arrayUnion, Timestamp } from 'firebase/firestore';
+import { updateDoc, doc, arrayUnion, Timestamp, serverTimestamp } from 'firebase/firestore';
 import {v4 as uuid } from "uuid"
 import {db, storage} from "../../firebase";
 import {uploadBytesResumable, ref, getDownloadURL} from "firebase/storage"
@@ -46,6 +46,22 @@ const handleSend = async () => {
       })
     })
   }
+
+  ///we are updateing the user chat to update the messages of the users on the latest message notification/ preview on the side bar.
+  await updateDoc(doc(db, "userChats", currentUser.uid), {
+    [data.chatId + ".lastMessages"]: {
+      text,
+    },
+    [data.chatId + ".date"]:serverTimestamp(),
+  })
+
+  //We are also updating the other users end to received the latest message preview
+  await updateDoc(doc(db, "userChats", data.user.uid), {
+    [data.chatId + ".lastMessages"]: {
+      text
+    },
+    [data.chatId + ".date"]:serverTimestamp()
+  })
   setText("")
   setImg(null)
 }
